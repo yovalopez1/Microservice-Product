@@ -28,15 +28,6 @@ public class ControllerProduct {
         return  servicesProduct.saveProduct(product);
     }
 
- /*   @DeleteMapping
-    public String deleteProduct(@PathVariable("id")long id){
-     if (servicesProduct.deleteProduct(id)){
-         return "se borro el producto"+ HttpStatus.OK;
-     }else {
-         return "No se logro borrar el producto";
-     }
-    }*/
-
     @DeleteMapping
     @RequestMapping(value = "/{id}",method = RequestMethod.DELETE)
     public ResponseEntity<EntityProduct> DeleteProduct(@PathVariable long id){

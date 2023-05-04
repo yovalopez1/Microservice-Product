@@ -2,12 +2,14 @@ package com.cinema.globant.Productmicroservices;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 @SpringBootApplication
-public class ProductMicroservicesApplication {
+@EnableEurekaClient
+public class ServicioProductsApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ProductMicroservicesApplication.class, args);
+		SpringApplication.run(ServicioProductsApplication.class, args);
 	}
 
 }

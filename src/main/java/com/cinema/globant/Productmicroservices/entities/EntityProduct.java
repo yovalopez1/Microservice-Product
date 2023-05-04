@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 
 @Entity
-@Table(name = "product")
+@Table(name = "products")
 public class EntityProduct {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,7 +17,6 @@ public class EntityProduct {
     private float price_product;
 
     public EntityProduct(){
-
     }
 
     public EntityProduct(long id_product, String name_product, String description_product, String type_product, String size_product, int quantity_product, float price_product) {
