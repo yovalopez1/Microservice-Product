@@ -14,22 +14,23 @@ public class ServicesProduct implements IServices_Product {
     @Autowired
     RepositoryProduct repositoryProduct;
 
-    @Override
+
     public ArrayList<EntityProduct> getProduct() {
         return (ArrayList<EntityProduct>) repositoryProduct.findAll();
     }
 
-    @Override
     public Optional<EntityProduct> getProductById(long id) {
         return repositoryProduct.findById(id);
     }
 
-    @Override
     public EntityProduct saveProduct(EntityProduct product) {
         return repositoryProduct.save(product);
     }
 
-    @Override
+    public void modificarProduct(EntityProduct product){
+        repositoryProduct.save(product);
+    }
+
     public boolean deleteProduct(long id) {
        try {
            Optional<EntityProduct>product=getProductById(id);

@@ -28,6 +28,11 @@ public class ControllerProduct {
         return  servicesProduct.saveProduct(product);
     }
 
+    @PutMapping
+    public void modificarProduct(@RequestBody EntityProduct product){
+        servicesProduct.modificarProduct(product);
+    }
+
     @DeleteMapping
     @RequestMapping(value = "/{id}",method = RequestMethod.DELETE)
     public ResponseEntity<EntityProduct> DeleteProduct(@PathVariable long id){
