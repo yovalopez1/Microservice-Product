@@ -37,7 +37,8 @@ public class ServicesProduct implements IServices_Product {
            repositoryProduct.delete(product.get());
            return true;
        }catch (Exception e){
-           return false;
+           e.printStackTrace(System.out);
        }
+       return false;
     }
 }

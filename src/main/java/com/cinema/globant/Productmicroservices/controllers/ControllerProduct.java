@@ -2,6 +2,7 @@ package com.cinema.globant.Productmicroservices.controllers;
 import com.cinema.globant.Productmicroservices.entities.EntityProduct;
 import com.cinema.globant.Productmicroservices.services.ServicesProduct;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,17 +16,17 @@ public class ControllerProduct {
     private ServicesProduct servicesProduct;
 
     @GetMapping
-    private ArrayList<EntityProduct> getAllProduct(){
-        return servicesProduct.getProduct();
+    private ResponseEntity<ArrayList<EntityProduct>> getAllProduct(){
+        return new ResponseEntity(servicesProduct.getProduct(), HttpStatus.OK);
     }
     @GetMapping("/{id}")
-    private Optional<EntityProduct> getProductByid(@PathVariable("id") long id){
-        return servicesProduct.getProductById(id);
+    private ResponseEntity<Optional<EntityProduct>> getProductByid(@PathVariable("id") long id){
+        return new ResponseEntity(servicesProduct.getProductById(id),HttpStatus.OK) ;
     }
 
     @PostMapping
-    public EntityProduct saveProduct(@RequestBody EntityProduct product){
-        return  servicesProduct.saveProduct(product);
+    public ResponseEntity<EntityProduct> saveProduct(@RequestBody EntityProduct product){
+        return new ResponseEntity(servicesProduct.saveProduct(product),HttpStatus.CREATED);
     }
 
     @PutMapping
@@ -37,6 +38,6 @@ public class ControllerProduct {
     @RequestMapping(value = "/{id}",method = RequestMethod.DELETE)
     public ResponseEntity<EntityProduct> DeleteProduct(@PathVariable long id){
         this.servicesProduct.deleteProduct(id);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.noContent().build();
     }
 }
